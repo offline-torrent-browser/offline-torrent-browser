@@ -1,0 +1,39 @@
+<% include partials/header %>
+
+<div class="container">
+  <h1 class="page-header"><%= torrent.name %></h1>
+
+  <table class="table table-striped">
+      <tr>
+        <td style="width: 20px">File</td>
+        <td>
+            <a href="magnet:?xt=urn:btih:<%=torrent.hash%>&dn=<%=encodeURIComponent(torrent.filename)%>" style="cursor: pointer"><span class="glyphicon glyphicon-magnet" style="color: red"></span> <%=torrent.filename%></a><br/>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 20px">Misc.</td>
+        <td>
+            Added: <%= torrent.added %> Size: <%= torrent.size %> MB Comments: <%= torrent.comments %> Thanks: <%= torrent.thanks %> Views: <%= torrent.views %>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 20px">Peers</td>
+        <td class="peers" data-hash="<%= torrent.hash %>">
+          <span class="glyphicon glyphicon-refresh spinning"></span>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 20px">Description</td>
+        <td>
+          <%- torrent.description %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="/static/js/dhtPeersFetcher.js"></script>
+<script src="/static/js/detailsDescriptionInit.js"></script>
+
+<% include partials/footer %>

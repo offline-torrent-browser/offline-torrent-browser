@@ -1,0 +1,138 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container .text-muted {
+  margin: 15px 0 0 0;
+}
+
+/* Spinning icon
+-------------------------------------------------- */
+.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
+.lang-ru-hide-all {
+  display: none;
+}
+
+/* Spoiler
+--------------------------------------------------- */
+.sp-wrap, .c-wrap {
+  -moz-background-clip:border;
+  -moz-background-inline-policy:continuous;
+  -moz-background-origin:padding;
+  background:#E9E9E6 none repeat scroll 0 0;
+  padding:0;
+
+  border-color:#A79F72;
+  border-style:solid;
+  border-width:1px 1px 1px 2px;
+  clear:both;
+
+  width:98%;
+
+  margin:8px;
+}
+
+.sp-body, .c-body {
+  -moz-background-clip:border;
+  -moz-background-inline-policy:continuous;
+  -moz-background-origin:padding;
+  background:#F3F3ED none repeat scroll 0 0;
+  border-width:1px 0 0;
+
+  font-weight:normal;
+
+  padding:2px 6px;
+
+  border-color:#C3CBD1;
+  border-style:solid;
+  clear:both;
+}
+
+.sp-body {
+  display:none;
+}
+
+.folded {
+  -moz-background-clip:border;
+  -moz-background-inline-policy:continuous;
+  -moz-background-origin:padding;
+  background:transparent url(/static/images/icon_plus.gif) no-repeat scroll left center;
+  display:block;
+  padding-left:14px;
+}
+.unfolded {
+  -moz-background-clip:border;
+  -moz-background-inline-policy:continuous;
+  -moz-background-origin:padding;
+  background:transparent url(/static/images/icon_minus.gif) no-repeat scroll left center;
+  display:block;
+  padding-left:14px;
+}
+.clickable {
+  cursor:pointer;
+}
+.sp-head, .c-head {
+  border-width:0;
+  color:#2A2A2A;
+  font-size:11px;
+  font-weight:bold;
+  line-height:15px;
+  text-align:left !important;
+}
+.sp-head {
+  margin-left:6px;
+  padding:1px 14px 3px;
+  cursor:pointer;
+}
+.sp-foot {
+  color:#545454;
+  font-size:11px;
+  text-align:left !important;
+  margin-top:6px;
+  cursor:pointer;
+  border-top:#E6E6E6 1px solid;
+  display:none;
+  background:transparent url(/pic/icon_minus.gif) no-repeat scroll left center;
+  padding-left:14px;
+}
+.c-head {
+  padding:1px 6px 3px;
+}
+
+.c-body {
+  color:#006600;
+}

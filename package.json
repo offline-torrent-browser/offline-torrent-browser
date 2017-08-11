@@ -1,0 +1,23 @@
+{
+  "name": "offline-torrent-browser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "offline-torrent-browser": "./index.js"
+  },
+  "dependencies": {
+    "bittorrent-dht": "~7.6.0",
+    "ejs": "~2.5.7",
+    "express": "~4.15.3",
+    "sqlite3": "~3.1.9"
+  },
+  "devDependencies": {
+    "nodemon": "~1.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Drogon Phoenix",
+  "license": "ISC"
+}

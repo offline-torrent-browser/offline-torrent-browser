@@ -1,0 +1,23 @@
+<% include partials/header %>
+
+<div class="container" style="max-width: 680px;">
+  <h1 class="page-header">TMD Offline version</h1>
+    <% if (errors) { %>
+      <div class="alert alert-warning" role="alert">
+        Error! Loading of the database has failed:
+        <br/>
+        "<%=errors%>"
+      </div >
+    <% } else { %>
+      <div class="alert alert-success" role="alert">Succes! The database with <%=totalTorrents%> torrents was loaded successfully.</div>
+    <% } %>
+
+  <div class="alert alert-info" role="alert">
+    Tip: Use % character when searching. Example "abc%def" will match
+    names that contain "abc" and "def" like abcBLAHdef.
+  </div>
+
+  <%- indexValue %>
+</div>
+
+<% include partials/footer %>

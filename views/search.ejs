@@ -1,0 +1,51 @@
+<% include partials/header %>
+
+<div class="container">
+  <h1 class="page-header">Found <%= totalFound %> matches</h1>
+
+<% if (totalFound > 0) { %>
+Finding peer count (give it a minute...)
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 0%; min-width: 2em;">
+    <span>0% Complete</span>
+  </div>
+</div>
+<% } %>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Cat.</th>
+        <th>Nume</th>
+        <th>Peers (DHT)</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% torrents.forEach(function(torrent){ %>
+      <tr>
+        <td style="width: 20px"><%= torrent.categoryName %></td>
+        <td style="width: 80%">
+          <a href="/details?id=<%= torrent.id %>"><%- torrent.name %></a></br>
+          <a href="magnet:?xt=urn:btih:<%=torrent.hash%>&dn=<%=encodeURIComponent(torrent.filename)%>" style="cursor: pointer"><span class="glyphicon glyphicon-magnet" style="color: red"></span></a>
+          Added: <%= torrent.added %> Size: <%= torrent.size %> MB Comments: <%= torrent.comments %> Thanks: <%= torrent.thanks %> Views: <%= torrent.views %>
+        </td>
+        <td class="peers" data-hash="<%= torrent.hash %>">
+          <span class="glyphicon glyphicon-refresh spinning"></span>
+        </td>
+      </tr>
+    <% }); %>
+    </tbody>
+  </table>
+
+  <% if (nextPageQuery != 1) { %>
+    <a href="?name=<%= nameQuery %>&page=<%= prevPageQuery %>"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Prev.</a>
+  <% } %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <% if (moreResults) { %>
+    <a href="?name=<%= nameQuery %>&page=<%= nextPageQuery %>">Next <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a> (100 results per page)
+  <% } %>
+</div>
+
+<script src="/static/js/dhtPeersFetcher.js"></script>
+
+<% include partials/footer %>
