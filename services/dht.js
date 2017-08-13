@@ -1,12 +1,16 @@
-var DHT = require('bittorrent-dht')
-var dht = new DHT()
+var DHT   = require('bittorrent-dht');
+var dht   = new DHT();
+var debug = false;
 
-dht.listen(0, function () {})
+dht.listen(0, function () {
+  if (debug) console.log('DHT is now started');
+});
 
 var foundCache = [];
 
 dht.on('peer', function (peer, infoHash, from) {
-  var infoHash                  = infoHash.toString('hex');
+  if (debug) console.log('found potential peer ' + peer.host + ':' + peer.port + ' through ' + from.address + ':' + from.port)
+  var infoHash                  = infoHash.toString('hex').toLowerCase();
   foundCache[infoHash]          = foundCache[infoHash] ? foundCache[infoHash] : {};
   foundCache[infoHash]['found'] = foundCache[infoHash]['found'] ? foundCache[infoHash]['found'] : 0;
 
@@ -17,6 +21,7 @@ dht.on('peer', function (peer, infoHash, from) {
 })
 
 function getPeerCount(hash) {
+  var hash = hash.toLowerCase();
   if (foundCache[hash] && foundCache[hash]['found']) {
     return foundCache[hash]['found'];
   } else {
