@@ -1,26 +1,24 @@
 #!/usr/bin/env node
 
 const express = require('express')
-const fs      = require('fs');
-const path    = require('path');
+const app                = express()
+app.set('view engine', 'ejs');
+app.set('views'      , __dirname + '/views');
+app.use('/static'    , express.static(__dirname + '/static'));
 
-if (process.argv.length != 3) {
-  var script = path.basename(process.argv[1]);
-  console.log("\nUsage: " + script + " <file.sqlite>");
-  return;
-}
-
-var sqliteFileParameter = process.argv[2];
-if (!fs.existsSync(sqliteFileParameter)) {
-  console.log("\nError, file '" + sqliteFileParameter + "' doesn't exist.")
-  return;
-}
-
+const cliHandler         = require('./services/commandLineHandler.js')
 const dht                = require('./services/dht.js')
 const torrentsDaoFactory = require('./services/torrentsDao.js')
-const torrentsDao        = new torrentsDaoFactory(sqliteFileParameter);
 const descriptionFormat  = require('./services/torrentDescriptionFormat.js')
-const app                = express()
+
+const cliParams           = cliHandler.fetchParameters();
+const sqliteFileParameter = cliParams.sqliteFileParameter;
+
+if (!sqliteFileParameter) {
+  process.exit();
+}
+
+const torrentsDao         = new torrentsDaoFactory(sqliteFileParameter);
 
 app.listen(3000, '127.0.0.1', function () {
   console.log('Server has started, open in your browser http://localhost:3000')
@@ -34,8 +32,6 @@ app.listen(3000, '127.0.0.1', function () {
     }
   });
 })
-app.set('view engine', 'ejs');
-app.use('/static', express.static('static'))
 
 app.get('/', function (req, res) {
 
