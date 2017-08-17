@@ -1,4 +1,4 @@
-# Offline torrent browser 🔎💾🌍
+# Offline torrent browser 🔎 💾 🌍
 
 Search 🔎 and download 💾 torrents with a local copy of a database 🌍.
 
@@ -16,6 +16,9 @@ Given the database this will start a local server that you can browse using your
 ```
 $ offline-torrent-browser example_db/example.sqlite
 ```
+
+## Demo
+![Demo](https://raw.githubusercontent.com/offline-torrent-browser/offline-torrent-browser/offmaster/demo.gif)
 
 ## SQLite
 SQLite database doesn't require a running daemon. You can query and modify the database using the
