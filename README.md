@@ -17,6 +17,9 @@ Given the database this will start a local server that you can browse using your
 $ offline-torrent-browser example_db/example.sqlite
 ```
 
+## Demo
+![Demo](https://raw.githubusercontent.com/offline-torrent-browser/offline-torrent-browser/master/DEMO.gif)
+
 ## SQLite
 SQLite database doesn't require a running daemon. You can query and modify the database using the
 SQLite command line tool.
